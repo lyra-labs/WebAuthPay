@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WebAuthPay Card Enrolment</title>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/style-card-registration.css">
+    <link rel="stylesheet" href="../css/misc.css">
+    <link rel="stylesheet" href="../css/snackbar-auth.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700|Roboto+Mono:500" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="card-container" id="card-register-all">
+        <header>
+            <h1>Authenticator creation</h1>
+            <h2>Please register your card number and expiration date, we will then create and associate your authenticator. No
+                payment will be proceed.</h2>
+        </header>
+
+        <main>
+            <div id="card-register-main">
+                <form action="" id="card-form">
+                    <div class="input-fields-container">
+                        <div id="cc-number-container" class="cc-generic">
+                            <label for="cc-number">Card number *</label>
+                            <input name="number" type="text" id="cc-number" class="cc-input" />
+                        </div>
+                        <!-- end cc-number-container -->
+                        <div id="cc-expiration-date-container">
+                            <label for="cc-expiration-date">Expiration date</label>
+                            <input name="expDate" type="text" id="cc-expiration-date" class="cc-input" />
+                        </div>
+                        <div id="cc-cvv-container">
+                            <label for="cc-cvv">CVV</label>
+                            <input name="cvv" type="text" id="cc-cvv" class="cc-input" />
+                        </div>
+                        <!-- end input-fields-container -->
+                    </div>
+
+                    <input id="submit-payment" type="submit" value="Register your authenticator" class="button-primary disabled"></input>
+                </form>
+            </div>
+
+        </main>
+
+        <footer>
+            <p id="footer_payment">
+                <em>* We only accept MasterCard, Visa, American Express, JCB, Diners Club and Discover.</em>
+                <em>* This is a demonstrator no payment will be processed.</em>
+            </p>
+        </footer>
+    </div>
+
+    <div class="card-container" id="container-tuto" style="display:none">
+        <header>
+            <h1>How to register</h1>
+            <h2>By clicking OK, we will create your authenticator. You will have to perform your U2F gesture to do so.</h2>
+            <h2>
+                If you are using chrome as a navigator, please go to chrome://flags and enable the Web Authentication API flag.
+            </h2>
+        </header>
+
+        <main class="main-container-tuto">
+            <div id="card-register-main">
+
+                <p>If you already have an U2F dongle, prepare it. For exemple, plug your FIDO USB device.</p>
+                <p>Tap it after clicking OK</p>
+                <img src="../img/yubikey-tuto.PNG" alt="" class="image-little-tuto">
+
+                <p>If you don't have any U2F dongle, you can use
+                    <a href="https://github.com/github/SoftU2F">SoftU2F</a> as a software authenticator (MacOS only). You can lean how to use it by a quick Readme overview.
+                </p>
+
+                <div class="tuto-button">
+                    <input name="tuto-validation" id="submit-payment" type="submit" value="OK" class="button-primary button-resize-custom"></input>
+                </div>
+            </div>
+
+        </main>
+
+
+    </div>
+    <!-- end card-container -->
+
+    <div id="snackbar-auth">Please perform your U2F gesture</div>
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/credit-card-utils.js"></script>
+    <script src="../js/jquery.inputmask.bundle.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/webauthn.auth.js"></script>
+    <script src="../js/base64url-arraybuffer.js"></script>
+    <script src="./scripts.js"></script>
+</body>
+
+</html>

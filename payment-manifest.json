@@ -1,0 +1,4 @@
+{
+    "default_applications": ["https://rsolomakhin.github.io/bobpay/gangguis-app.json", "https://gogerald.github.io/pr/bobpaypersonal/manifest.json"],
+    "supported_origins": ["*"]
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>WebAuthPay</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+
+    <!-- Theme CSS -->
+    <link href="css/new-age.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/snackbar.css">
+    <style>
+        .invisible {
+            display: none !important;
+        }
+
+        .error-message {
+            color: red;
+            font-size: smaller;
+        }
+    </style>
+
+    <!-- BobPay web app manifest -->
+    <link rel="manifest" href="/pay/manifest.json">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Register Payment App SW -->
+    <!-- <script src="js/service_workers-utils.js"></script> -->
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainnav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">toggle navigation</span> menu
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">WebAuthPay</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#download">App</a>
+                    </li>
+                    <!-- <li>
+                        <a class="page-scroll" id="installbutton" href="#download">Loading...</a>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <h1>AuthnPay Payment Handler is a Wep App that try to mix Webauthn, Payment Request API and Payment
+                                Handler API.
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section id="download" class="download bg-secondary text-center">
+        <div class="container">
+            <div class="row badges text-left">
+
+                <!-- Homemade + Webauthn -->
+
+                <div class="col-md-6">
+                    <h3 class="text-center">AuthnPay card enrolment</h3>
+                    <p class="badge-link">
+                        <img src="img/padlock.png" alt="">&nbsp;
+                        <a href="/cards/">Register your authenticator</a>
+                    </p>
+                    <p class="badge-link">
+                        <img src="img/credit-card-home.jpg" alt="">&nbsp;
+                        <a href="/cc_auth/">Pay with your authenticator enroled card</a>
+                    </p>
+                </div>
+
+                <!-- Payment handler part, need to be fixed -->
+
+                <!-- Payment Handler + PR API  -->
+
+                <!-- <div class="col-md-6"> -->
+                    <!-- <h3 class="text-center">AuthnPay web payment app</h3>
+
+                    <p id="installed" class="badge-link invisible">
+                        <img src="img/uninstall.svg" alt="">&nbsp;
+                        <a href="#uninstall" onclick="unregisterPaymentAppServiceWorker()">
+                            Uninstall AuthnPay Web Payment App</a>
+                    </p>
+
+                    <p id="notinstalled" class="badge-link invisible">
+                        <img src="img/download.svg" alt="">&nbsp;
+                        <a href="#installit" onclick="registerPaymentAppServiceWorker()">
+                            Install AuthnPay Web Payment App</a>
+                    </p>
+
+                    <p class="badge-link">
+                        <img src="img/credit-card-home.jpg" alt="">&nbsp;
+                        <a onclick="onBuyClicked()">Test the Payment Request API</a>
+                    </p>
+
+                    <p class="badge-link">
+                        <img src="img/source.svg" alt="">&nbsp;
+                        <a href="https://github.com/lyra-labs/WebAuthPay/tree/master/static/pay">See the source code</a>
+                    </p> -->
+
+                <!-- </div> -->
+                <!-- <p id="bobpayerror" class="error-message"></p> -->
+            </div>
+        </div>
+    </section>
+
+    <div id="snackbar">Congratz! Your authenticator is registered!</div>
+    <div id="snackbar-error">Sorry, your authenticator's registration failed</div>
+
+    <footer>
+        <div class="container">
+
+            <pre id="msg"></pre>
+            <p>
+                <a href="https://github.com/lyra-labs/WebAuthPay">See the source on Github</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/snackbar.js"></script>
+    <script src="js/new-age.min.js"></script>
+    <script src="pay/PR/payment_request.js"></script>
+    <script src="pay/PR/utils_pr.js"></script>
+
+</body>
+
+</html>

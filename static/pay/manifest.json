@@ -1,0 +1,19 @@
+{
+  "name": "Pay with AuthnPay",
+  "short_name": "AuthnPay",
+  "icons": [{
+  	"src": "./w3c_logo.png",
+  	"sizes": "300x300",
+  	"type": "image/png"
+  }],
+  "serviceworker": {
+    "src": "sw-bobpay.js",
+    "use_cache": false
+  },
+  "prefer_related_applications": true,
+  "related_applications": [{
+  	"platform": "play",
+  	"url": "https://play.google.com/store/apps/details?id=com.bobpay",
+  	"id": "com.bobpay"
+  }]
+}

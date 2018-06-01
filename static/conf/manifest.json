@@ -1,0 +1,12 @@
+{
+    "name": "Lyra Payment Handler",
+    "icons": [{
+        "src": "lyra-network-300.jpg",
+        "sizes": "300x300",
+        "type": "image/png"
+    }],
+    "serviceworker" : {
+        "src" : "payment_handler.js",
+        "use_cache": false
+    }
+}

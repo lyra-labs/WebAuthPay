@@ -1,0 +1,20 @@
+{
+  "name": "webauthn",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "base64url": "^2.0.0",
+    "body-parser": "^1.15.2",
+    "cbor": "^3.0.3",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "express": "^4.15.4",
+    "@google-cloud/storage": "^1.6.0"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "private": true,
+  "author": "Maxime Bel <maxime.bel@lyra-network.com>"
+}
