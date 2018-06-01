@@ -11,8 +11,8 @@ The website should be tested with chrome canary with "Service Worker payment app
 ## Test it
 
 Just `npm install` from the project root.
+
 After the npm install has succeed, just run `node app`, the website should run on localhost:8080
-Currently online [here](https://test-payment-handler.appspot.com/).
 
 ### How to test
 
