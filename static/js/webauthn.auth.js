@@ -49,7 +49,7 @@ function authGraphicalUpdate() {
 
     snack = document.getElementById("snackbar-auth");
     snack.className = "show"
-    setTimeout(function(){ snack.className = snack.className.replace("show", ""); }, 5000)
+    setTimeout(function () { snack.className = snack.className.replace("show", ""); }, 5000)
 }
 
 // $('#card-form').submit(function (event) {
@@ -105,8 +105,11 @@ let getGetAssertionChallenge = (formBody) => {
     })
         .then((response) => response.json())
         .then((response) => {
-            if (response.status !== 'ok')
+            if (response.status !== 'ok') {
+                if (response.message === "Not registered")
+                    return response
                 throw new Error(`Server responed with error. The message is: ${response.message}`);
+            }
 
             return response
         })
@@ -124,7 +127,7 @@ function showPaymentTutorial() {
 
     snack = document.getElementById("snackbar-auth");
     snack.className = "show"
-    setTimeout(function(){ snack.className = snack.className.replace("show", ""); }, 5000)
+    setTimeout(function () { snack.className = snack.className.replace("show", ""); }, 5000)
 }
 
 $('#payment-form').submit(function (event) {
@@ -143,17 +146,19 @@ $('#payment-form').submit(function (event) {
         console.log("Missing cc-number or cvv or expiration date");
     }
 
-    console.log(cvv);
-    console.log(cc_number);
-    console.log(expDate);
-
     getGetAssertionChallenge({ cc_number, expDate, cvv })
         .then((response) => {
             console.log(response)
+            if (response.status === 'failed' && response.message === "Not registered") {
+                showAlternativeStrongAuth()
+                return {'status': 'done'} 
+            }
             let publicKey = preformatGetAssertReq(response);
             return navigator.credentials.get({ publicKey })
         })
         .then((response) => {
+            if (response.status === 'done') return {'status': 'done'} 
+
             // easiest solution found to make double factor auth and not 2 steps auth
             let getAssertionResponse = publicKeyCredentialToJSON(response);
             getAssertionResponse.usernameToTest = cc_number;
@@ -162,26 +167,26 @@ $('#payment-form').submit(function (event) {
             return sendWebAuthnResponse(getAssertionResponse)
         })
         .then((response) => {
-            if (response.status === 'ok') {
+            if (response.status === 'done') return {'status': 'done'} 
+            else if (response.status === 'ok') {
                 console.log("success")
                 showPaymentSuccess()
             } else {
                 showPaymentError()
             }
         })
-        // window.location.replace("http://localhost:8080?auth=error")
         .catch((error) => showPaymentError())
 })
 
 $('#card-form').submit(function (event) {
     event.preventDefault()
-    
+
     let cc_number_g = this.number.value
     let expDate_g = this.expDate.value
 
     window.payment_variables = {
-        cc_number_g : cc_number_g,
-        expDate_g : expDate_g
+        cc_number_g: cc_number_g,
+        expDate_g: expDate_g
     }
 
     $('#card-register-all').hide()

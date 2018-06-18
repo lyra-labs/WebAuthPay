@@ -2,11 +2,30 @@
 * On Document Ready
 */
 
+function onAlternativeAuth() {
+	if ($('#cc-sms').val() && $('#cc-sms').val().length > 0) {
+		showPaymentSuccess()
+	}
+}
+
+function showAlternativeStrongAuth() {
+	$('#header_payment').hide()
+
+	$('#card-register-main').hide()
+	$('#container-sms').show()
+
+
+	$('#footer_payment').hide()
+
+	$('#container-tuto').hide()
+	$('#base-container').show()
+}
+
 function showPaymentError() {
-    $('#header_payment').hide()
-    
-    $('#card-register-main').hide()
-    $('#error_pay').show()
+	$('#header_payment').hide()
+
+	$('#card-register-main').hide()
+	$('#error_pay').show()
 
 	$('#footer_payment').hide()
 
@@ -15,12 +34,14 @@ function showPaymentError() {
 }
 
 function showPaymentSuccess() {
-    $('#header_payment').hide()
-    
-    $('#card-register-main').hide()
-    $('#success_pay').show()
+	$('#header_payment').hide()
+	$('#container-sms').hide()
 
-    $('#footer_success').show()
+
+	$('#card-register-main').hide()
+	$('#success_pay').show()
+
+	$('#footer_success').show()
 	$('#footer_payment').hide()
 
 	$('#container-tuto').hide()
