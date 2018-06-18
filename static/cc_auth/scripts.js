@@ -2,6 +2,18 @@
 * On Document Ready
 */
 
+function showPaymentError() {
+    $('#header_payment').hide()
+    
+    $('#card-register-main').hide()
+    $('#error_pay').show()
+
+	$('#footer_payment').hide()
+
+	$('#container-tuto').hide()
+	$('#base-container').show()
+}
+
 function showPaymentSuccess() {
     $('#header_payment').hide()
     
@@ -13,7 +25,6 @@ function showPaymentSuccess() {
 
 	$('#container-tuto').hide()
 	$('#base-container').show()
-
 }
 
 (function ($) {

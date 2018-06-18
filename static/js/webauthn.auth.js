@@ -166,11 +166,11 @@ $('#payment-form').submit(function (event) {
                 console.log("success")
                 showPaymentSuccess()
             } else {
-                console.log(`Server responed with error. The message is: ${response.message}`);
+                showPaymentError()
             }
         })
         // window.location.replace("http://localhost:8080?auth=error")
-        .catch((error) => console.log(error))
+        .catch((error) => showPaymentError())
 })
 
 $('#card-form').submit(function (event) {
