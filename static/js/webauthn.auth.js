@@ -140,7 +140,6 @@ $('#payment-form').submit(function (event) {
     let cc_number = this.number.value;
     let expDate = this.expDate.value;
 
-    showPaymentTutorial()
 
     if (!cvv || !cc_number || !expDate) {
         console.log("Missing cc-number or cvv or expiration date");
@@ -153,6 +152,7 @@ $('#payment-form').submit(function (event) {
                 showAlternativeStrongAuth()
                 return {'status': 'done'} 
             }
+            showPaymentTutorial()
             let publicKey = preformatGetAssertReq(response);
             return navigator.credentials.get({ publicKey })
         })
