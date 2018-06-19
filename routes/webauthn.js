@@ -90,7 +90,7 @@ router.post('/login', (request, response) => {
     if (!database[username]) {
         response.json({
             'status' : 'failed',
-            'message' : 'Can\'t access the user\'s authenticator'
+            'message' : 'Not registered'
         })
 
         return 
