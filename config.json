@@ -1,4 +1,4 @@
 {
-    "port": 8080,
-    "origin": "https://test-payment-handler.appspot.com"
+    "port": 9094,
+    "origin": "https://webauthpay-demo.lyra-labs.fr"
 }

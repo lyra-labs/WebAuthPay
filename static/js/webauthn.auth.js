@@ -81,15 +81,15 @@ $("[name='tuto-validation']").click(function (event) {
         .then((response) => {
             if (response.status === 'ok') {
                 console.log("success")
-                window.location.replace("http://localhost:8080?auth=success")
+                window.location.replace("https://webauthpay-demo.lyra-labs.fr?auth=success")
             } else {
                 console.log(`Server responed with error. The message is: ${response.message}`);
-                window.location.replace("http://localhost:8080?auth=error")
+                window.location.replace("https://webauthpay-demo.lyra-labs.fr?auth=error")
             }
         })
         .catch((error) => {
             console.log(error)
-            window.location.replace("http://localhost:8080?auth=error")
+            window.location.replace("https://webauthpay-demo.lyra-labs.fr?auth=error")
         })
 })
 

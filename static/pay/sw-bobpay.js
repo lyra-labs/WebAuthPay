@@ -1,3 +1,5 @@
+const IS_WEBAUTHN_ACTIVATED = false
+
 let payment_request_event = undefined;
 let payment_request_resolver = undefined;
 
@@ -14,8 +16,13 @@ self.addEventListener('paymentrequest', function (e) {
   payment_request_resolver = new PromiseResolver();
   e.respondWith(payment_request_resolver.promise);
 
-  // var url = "https://test-payment-handler.appspot.com/auth/authentication.html";
-  var url = "https://test-payment-handler.appspot.com/cc_auth";
+  var url = "";
+
+  if (IS_WEBAUTHN_ACTIVATED == true) {
+    url = "https://webauthpay-demo.lyra-labs.fr/cc_auth";
+  } else {
+    url = "https://webauthpay-demo.lyra-labs.fr/pay/paymentcinematics/sms.html"
+  }
 
   console.log(e.methodData);
 
@@ -27,12 +34,12 @@ self.addEventListener('paymentrequest', function (e) {
 
       console.log(window_client);
 
-      if (!window_client.focused) {
-        window_client.focus()
-        .catch((error) => {
-          console.log(error);
-        })
-      }
+      // if (!window_client.focused) {
+      //   window_client.focus()
+      //     .catch((error) => {
+      //       console.log(error);
+      //     })
+      // }
 
     })
     .catch(function (err) {

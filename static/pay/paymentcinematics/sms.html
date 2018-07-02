@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Credit Card Form for WebAuthPay</title>
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="./style-payment-window.css">
+    <!-- <link rel="stylesheet" href="../css/snackbar-auth.css"> -->
+    <link rel="stylesheet" href="../../css/misc.css">
+    <link rel="stylesheet/less" href="../../less/animated_success.less">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700|Roboto+Mono:500" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="card-container" id="base-container">
+        <header id="header_payment">
+            <h1>Pay with WebAuthPay</h1>
+            <h2>Please enter the credit card
+                <span id="title-cc-number" class="active">number</span>,
+                <span id="title-cc-expiration-date">expiration date</span> and
+                <span id="title-cc-cvv">security code</span>.</h2>
+        </header>
+
+        <main>
+            <div id="card-register-main">
+                <form action="" id="payment-form">
+                    <div class="input-fields-container">
+                        <div id="cc-number-container" class="cc-generic" style="margin-left: 1em;">
+                            <label for="cc-number">Card number *</label>
+                            <input name="number" type="text" id="cc-number" class="cc-input" />
+                        </div>
+                        <!-- end cc-number-container -->
+                        <div id="cc-expiration-date-container">
+                            <label for="cc-expiration-date">Expiration date</label>
+                            <input name="expDate" type="text" id="cc-expiration-date" class="cc-input" />
+                        </div>
+                        <div id="cc-cvv-container" style="margin-left: 1em;">
+                            <label for="cc-cvv">CVV</label>
+                            <input name="cvv" type="text" id="cc-cvv" class="cc-input" />
+                        </div>
+                    </div>
+                    <!-- end input-fields-container -->
+
+                    <br/>
+                    <div style="text-align: center">
+                        <input id="submit-payment" type="button" value="Pay" class="button-primary disabled"></input>
+                    </div>
+                </form>
+            </div>
+
+
+            <div id="success_pay" style="display:none">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"
+                    />
+                    <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10"
+                        points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                </svg>
+                <p class="success">Payment Successful !</p>
+            </div>
+            <div id="error_pay" style="display:none">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#D06079" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"
+                    />
+                    <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4"
+                        y1="37.9" x2="95.8" y2="92.3" />
+                    <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8"
+                        y1="38" x2="34.4" y2="92.2" />
+                </svg>
+                <p class="error">Payment failed.</p>
+            </div>
+        </main>
+
+        <footer>
+            <p id="footer_success" style="display:none">
+                <em>This is a demonstrator no payment has been processed.</em>
+            </p>
+
+            <p id="footer_payment">
+                <em>* We only accept MasterCard, Visa, American Express, JCB, Diners Club and Discover.</em>
+                <em>* This is a demonstrator no payment will be processed.</em>
+            </p>
+        </footer>
+
+    </div>
+    <!-- end card-container -->
+
+
+    <div class="card-container" id="container-sms" style="display:none; padding-bottom: 4em; ">
+        <header>
+            <h1>You will receive a code from your bank. Please enter it.</h1>
+        </header>
+
+        <main class="main-container-tuto">
+            <div id="card-register-main">
+
+                <form action="" id="payment-form">
+                    <div id="sms-container" class="cc-generic">
+                        <label for="cc-number">SMS security code</label>
+                        <input name="sms" type="text" id="cc-sms" class="cc-input" />
+                    </div>
+                    <div style="text-align: center; margin-top: 2em">
+                        <input id="submit-payment" onclick="onAlternativeAuth();" type="button" value="Pay" class="button-primary"></input>
+                    </div>
+                </form>
+
+            </div>
+
+        </main>
+
+        <footer>
+            <em>This is a demonstrator, no payment will be proceed</em>
+        </footer>
+
+
+    </div>
+    <!-- end card-container -->
+
+    <!-- <div id="snackbar-auth">Please perform your U2F gesture</div> -->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/jquery.inputmask.bundle.min.js"></script>
+    <script src="../../js/credit-card-utils.js"></script>
+    <!-- <script src="../js/webauthn.auth.js"></script> -->
+    <script src="../../js/utils.js"></script>
+    <!-- <script src="../js/base64url-arraybuffer.js"></script> -->
+    <script src="./scripts.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.2/less.min.js"></script>
+</body>
+
+</html>
