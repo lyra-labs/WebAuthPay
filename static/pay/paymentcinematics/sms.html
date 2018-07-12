@@ -5,7 +5,6 @@
     <title>Credit Card Form for WebAuthPay</title>
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="./style-payment-window.css">
-    <!-- <link rel="stylesheet" href="../css/snackbar-auth.css"> -->
     <link rel="stylesheet" href="../../css/misc.css">
     <link rel="stylesheet/less" href="../../less/animated_success.less">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700|Roboto+Mono:500" rel="stylesheet">
@@ -13,7 +12,7 @@
 
 <body>
 
-    <div class="card-container" id="base-container">
+    <div class="card-container" id="base-container" style="padding-bottom: 3em">
         <header id="header_payment">
             <h1>Pay with WebAuthPay</h1>
             <h2>Please enter the credit card
@@ -73,14 +72,14 @@
         </main>
 
         <footer>
-            <p id="footer_success" style="display:none">
-                <em>This is a demonstrator no payment has been processed.</em>
-            </p>
+                <p id="footer_success" style="display:none">
+                    <em>This is a demonstrator no payment has been processed.</em>
+                </p>
 
-            <p id="footer_payment">
-                <em>* We only accept MasterCard, Visa, American Express, JCB, Diners Club and Discover.</em>
-                <em>* This is a demonstrator no payment will be processed.</em>
-            </p>
+                <p id="footer_payment"0style="margin: 0em; padding-bottom: 0em">
+                    <em>* We only accept MasterCard, Visa, American Express, JCB, Diners Club and Discover.</em>
+                    <em>* This is a demonstrator no payment will be processed.</em>
+                </p>
         </footer>
 
     </div>
@@ -96,7 +95,7 @@
             <div id="card-register-main">
 
                 <form action="" id="payment-form">
-                    <div id="sms-container" class="cc-generic">
+                    <div id="sms-container" class="cc-generic" style="margin-left: 1em">
                         <label for="cc-number">SMS security code</label>
                         <input name="sms" type="text" id="cc-sms" class="cc-input" />
                     </div>
