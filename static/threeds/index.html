@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test of ACS Iframe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="./threeds.css">
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.css" type="text/css" rel="stylesheet"
+    /> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+</head>
+
+<body>
+
+<h1 class="text-center">Test 3DS 2.1 Server</h1>
+
+<iframe id="methodIframe"></iframe>
+
+<br>
+    <div class="container">
+        <form>
+            <div class="form-group row">
+                <label for="example-text-input" class="col-2 col-form-label">Name</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" value="" placeholder="Rob Halford" id="name-input">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="example-email-input" class="col-2 col-form-label">Email</label>
+                <div class="col-10">
+                    <input class="form-control" type="email" value="" placeholder="rob.halford@judas-priest.com" id="email-input">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
+                <div class="col-10">
+                    <input class="form-control" type="tel" placeholder="06.05.04.03.02" value="" id="tel-input">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">Address</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" placeholder="Road 66" value="" id="address-input">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-number-input" class="col-2 col-form-label">Post Code</label>
+                <div class="col-10">
+                    <input class="form-control" type="number" placeholder="31000" value="" id="post-code-input">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">City</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" placeholder="Camden Town" value="" id="city-input">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-number-input" class="col-2 col-form-label">Card Number</label>
+                <div class="col-10">
+                    <input class="form-control" type="number" placeholder="4111111111111111" value="" id="cc-number-input">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-number-input" class="col-2 col-form-label">Expiration Date</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" placeholder="01/19" value="" id="date-input">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-number-input" class="col-2 col-form-label">CVV</label>
+                <div class="col-10">
+                    <input class="form-control" type="number" placeholder="666" value="" id="cvv-input">
+                </div>
+            </div>
+            <input id="button-iframe" type="button" class="btn btn-primary button-bigger" value="Submit"></input>
+
+        </form>
+    </div>
+
+
+
+    <script src="//code.jquery.com/jquery-latest.js"></script>
+    <script src="//cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./threedsController.js"></script>
+</body>
+
+<footer>
+
+</footer>
+
+</html>

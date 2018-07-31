@@ -52,7 +52,10 @@ function authGraphicalUpdate() {
     setTimeout(function () { snack.className = snack.className.replace("show", ""); }, 5000)
 }
 
-// $('#card-form').submit(function (event) {
+//
+// Create credentials and call the server to associate authenticator to cc-nb + date
+//
+
 $("[name='tuto-validation']").click(function (event) {
     event.preventDefault();
 
