@@ -45,7 +45,7 @@ let CReq = {
 let savedIframe = {}
 
 let getPaymentData = () => {
- return {
+    return {
         cc_number: $('#cc-number-input').val(),
         email: $('#email-input').val(),
         cvv: $('#cvv-input').val(),
@@ -56,14 +56,37 @@ let getPaymentData = () => {
         city_name: $('#city-input').val(),
         phone_number: $('#tel-input').val(),
         address: $('#address-input').val(),
+        challengeOption: $('#challenge-input').val(),
         // variable comes from threeDSMethod.js
-        threeDSServerTransID : threeDSServerTransID_global
+        threeDSServerTransID: threeDSServerTransID_global
     }
+}
+
+let sendConfirmationRequest = (acsTransID) => {
+
+    let identifier = {}
+    identifier.acsTransID = acsTransID
+
+    fetch('http://localhost:4242/merchant/requestConfirmation', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(identifier)
+    })
+        .then((response) => response.json())
+        .then((response) => {
+
+            if (response.status === 'authentified') {
+                window.setTimeout(function () { savedIframe.close(); }, 2400);
+            }
+        })
+
 }
 
 // send the CReq and spawn the auth Iframe containing the plaintext HTML response
 let sendcReq = (acsURL, acsTransID, threeDSServerTransID) => {
-    
+
     CReq.acsTransID = acsTransID
     CReq.threeDSServerTransID = threeDSServerTransID
     fetch(acsURL, {
@@ -75,14 +98,14 @@ let sendcReq = (acsURL, acsTransID, threeDSServerTransID) => {
     })
         .then((response) => response.text())
         .then((response) => {
-            console.log(response);
+            sendConfirmationRequest(acsTransID)
             savedIframe = $.featherlight(response, defaults)
         })
         .catch((error) => alert(error))
 }
 
 // send the form to the merchant server to initiate the transaction
-let startAuthentication = () => {
+let startAuthentication = (threeDSServerTransID) => {
 
     let paymentData = getPaymentData()
 
@@ -111,41 +134,41 @@ let startAuthentication = () => {
 }
 
 // Recieve message from Auth Iframe and 3DSMethod_URL Iframe
-window.addEventListener("message", receiveMessage, false);
+// window.addEventListener("message", receiveMessage, false);
 
-function receiveMessage(event) {
+// function receiveMessage(event) {
 
-    let NOTIFICATION_URL = ""
+//     let NOTIFICATION_URL = ""
 
-    if (event.origin !== "http://localhost:9094") {
-        return;
-    }
+//     if (event.origin !== "http://localhost:9094") {
+//         return;
+//     }
 
-    if (event.data) {
-        if (event.data.messageType == 'CRes') {  // classic auth case (CReq/Cres)
-            NOTIFICATION_URL = event.data.notificationURL
+//     if (event.data) {
+//         if (event.data.messageType == 'CRes') {  // classic auth case (CReq/Cres)
+//             NOTIFICATION_URL = event.data.notificationURL
 
-            fetch(NOTIFICATION_URL, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(event.data)
-            })
-                .then((response) => response.json())
-                .then((response) => {
-                    console.log(response)
-                    window.setTimeout(function () { savedIframe.close(); }, 2400);
+//             fetch(NOTIFICATION_URL, {
+//                 method: 'POST',
+//                 headers: {
+//                     "Content-Type": "application/json"
+//                 },
+//                 body: JSON.stringify(event.data)
+//             })
+//                 .then((response) => response.json())
+//                 .then((response) => {
+//                     console.log(response)
+//                     window.setTimeout(function () { savedIframe.close(); }, 2400);
 
-                })
-                .catch((error) => console.log(error))
-        }
-        else if (event.data.status) {  // 3DS method case
-            console.log("starting authentication");
-            
-            startAuthentication()
-        }
-    }
+//                 })
+//                 .catch((error) => console.log(error))
+//         }
+//         // else if (event.data.status) {  // 3DS method case
+//         //     console.log("starting authentication");
+
+//         //     startAuthentication()
+//         // }
+//     }
 
 
-}
+// }

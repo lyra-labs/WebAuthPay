@@ -4,22 +4,22 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Test of ACS Iframe</title>
+    <title>3DS Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="stylesheet" href="./threeds.css">
+    <link rel="stylesheet" href="./threeds.css">
     <link href="//cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.css" type="text/css" rel="stylesheet"
-    /> 
+    />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
 </head>
 
 <body>
 
-<h1 class="text-center">Test 3DS 2.1 Server</h1>
+    <h1 class="text-center">Test 3DS 2.1 Server</h1>
 
-<iframe width="0" height="0" frameborder="0" scrolling="no" vspace="0" hspace="0" marginheight="0" marginwidth="0" id="methodIframe"></iframe>
+    <iframe width="0" height="0" frameborder="0" scrolling="no" vspace="0" hspace="0" marginheight="0" marginwidth="0" id="methodIframe"></iframe>
 
-<br>
+    <br>
     <div class="container">
         <form>
             <div class="form-group row">
@@ -82,12 +82,16 @@
                     <input class="form-control" type="number" placeholder="666" value="" id="cvv-input">
                 </div>
             </div>
+            <div class="form-group row">
+                <label for="example-number-input" class="col-2 col-form-label">CVV</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" placeholder="True/False" value="" id="cvv-challenge">
+                </div>
+            </div>
             <input id="button-iframe" type="button" class="btn btn-primary button-bigger" value="Submit"></input>
 
         </form>
     </div>
-
-
 
     <script src="//code.jquery.com/jquery-latest.js"></script>
     <script src="//cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

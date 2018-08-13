@@ -1,6 +1,5 @@
 let threeDSServerTransID_global = ""
 
-
 // here we get the URL + 3dsServerTransID
 // We spawn the iframe (get ID, request wait response and message)
 // in the message handler we send the startPayment request
@@ -44,6 +43,7 @@ $(document).ready(() => {
                     return
                 } else {
                     threeDSServerTransID_global = response.threeDSServerTransID
+                    startAuthentication(response.threeDSServerTransID)
                     getIframeContent(response.threeDSServerTransID, response.threeDSMethodURL, response.notificationMethodURL)
                         .then((htmlContent) => {
                             

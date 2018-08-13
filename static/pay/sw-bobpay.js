@@ -1,4 +1,5 @@
-const IS_WEBAUTHN_ACTIVATED = false
+// const IS_WEBAUTHN_ACTIVATED = false
+const IS_WEBAUTHN_ACTIVATED = true
 
 let payment_request_event = undefined;
 let payment_request_resolver = undefined;
