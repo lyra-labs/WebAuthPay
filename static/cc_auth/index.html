@@ -5,6 +5,7 @@
     <title>Credit Card Form for WebAuthPay</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/style-card-registration.css">
+    <link rel="stylesheet" href="./style-payment-window.css">
     <link rel="stylesheet" href="../css/snackbar-auth.css">
     <link rel="stylesheet" href="../css/misc.css">
     <link rel="stylesheet/less" href="../less/animated_success.less">
@@ -13,7 +14,7 @@
 
 <body>
 
-    <div class="card-container" id="base-container">
+    <div class="card-container" id="base-container" style="padding-bottom: 3em">
         <header id="header_payment">
             <h1>Pay with WebAuthPay</h1>
             <h2>Please enter the credit card
@@ -42,7 +43,9 @@
                     </div>
                     <!-- end input-fields-container -->
 
-                    <input id="submit-payment" type="submit" value="Pay" class="button-primary disabled"></input>
+                    <div style="text-align: center">
+                        <input id="submit-payment" type="submit" value="Pay" class="button-primary disabled"></input>
+                    </div>
                 </form>
             </div>
 
@@ -74,7 +77,7 @@
                 <em>This is a demonstrator no payment has been processed.</em>
             </p>
 
-            <p id="footer_payment">
+            <p id="footer_payment" style="margin: 0em; padding-bottom: 0em">
                 <em>* We only accept MasterCard, Visa, American Express, JCB, Diners Club and Discover.</em>
                 <em>* This is a demonstrator no payment will be processed.</em>
             </p>
@@ -105,7 +108,7 @@
         </main>
     </div>
 
-    <div class="card-container" id="container-sms" style="display:none">
+    <div class="card-container" id="container-sms" style="display:none; padding-bottom: 4em;">
         <header>
             <h1>Your card is not registered</h1>
             <br>
@@ -116,11 +119,11 @@
             <div id="card-register-main">
 
                 <form action="" id="payment-form">
-                    <div id="sms-container" class="cc-generic">
+                    <div id="sms-container" class="cc-generic" style="margin-left: 1em">
                         <label for="cc-number">SMS security code</label>
                         <input name="sms" type="text" id="cc-sms" class="cc-input" />
                     </div>
-                    <input id="submit-payment" onclick="onAlternativeAuth();" style="margin-top: 2em" type="button" value="Pay" class="button-primary"></input>
+                    <input id="submit-payment" onclick="onAlternativeAuth();" type="button" value="Pay" class="button-primary"></input>
                 </form>
 
             </div>

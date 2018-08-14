@@ -56,7 +56,7 @@ let getPaymentData = () => {
         city_name: $('#city-input').val(),
         phone_number: $('#tel-input').val(),
         address: $('#address-input').val(),
-        challengeOption: $('#challenge-input').val(),
+        challengeOption: false,
         // variable comes from threeDSMethod.js
         threeDSServerTransID: threeDSServerTransID_global
     }
@@ -109,10 +109,17 @@ let startAuthentication = (threeDSServerTransID) => {
 
     let paymentData = getPaymentData()
 
+    if ($('#challenge-input').is(':checked')) {
+        console.log("CHECKBOX CHECKED");
+        paymentData.challengeOption = true
+    }
+
     // assert that all inputs are filled
     $.each(paymentData, (i, value) => {
         if (!value) { return false }
     })
+
+    console.log(paymentData);
 
     fetch('http://localhost:4242/merchant/pay', {
         method: 'POST',
@@ -124,51 +131,21 @@ let startAuthentication = (threeDSServerTransID) => {
         .then((response) => response.json())
         .then((response) => {
             console.log(response);
+
+            if (response.status == "ko") {
+                alert(response.message)
+                return
+            }
             if (response.data.messageType == 'ARes' && response.what == 'Challenge') {
                 sendcReq(response.data.acsURL, response.data.acsTransID, response.data.threeDSServerTransID)
             } else {
-                if (response.data.messageType === 'ARes') { alert('TODO'); return }
+                if (response.data.messageType === 'ARes') {
+                    savedIframe = $.featherlight("./iframe_success.html", defaults)
+                    window.setTimeout(function () { savedIframe.close(); }, 4000);
+
+                    return
+                }
                 alert('ERROR')
             }
         })
 }
-
-// Recieve message from Auth Iframe and 3DSMethod_URL Iframe
-// window.addEventListener("message", receiveMessage, false);
-
-// function receiveMessage(event) {
-
-//     let NOTIFICATION_URL = ""
-
-//     if (event.origin !== "http://localhost:9094") {
-//         return;
-//     }
-
-//     if (event.data) {
-//         if (event.data.messageType == 'CRes') {  // classic auth case (CReq/Cres)
-//             NOTIFICATION_URL = event.data.notificationURL
-
-//             fetch(NOTIFICATION_URL, {
-//                 method: 'POST',
-//                 headers: {
-//                     "Content-Type": "application/json"
-//                 },
-//                 body: JSON.stringify(event.data)
-//             })
-//                 .then((response) => response.json())
-//                 .then((response) => {
-//                     console.log(response)
-//                     window.setTimeout(function () { savedIframe.close(); }, 2400);
-
-//                 })
-//                 .catch((error) => console.log(error))
-//         }
-//         // else if (event.data.status) {  // 3DS method case
-//         //     console.log("starting authentication");
-
-//         //     startAuthentication()
-//         // }
-//     }
-
-
-// }

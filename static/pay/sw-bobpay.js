@@ -35,13 +35,6 @@ self.addEventListener('paymentrequest', function (e) {
 
       console.log(window_client);
 
-      // if (!window_client.focused) {
-      //   window_client.focus()
-      //     .catch((error) => {
-      //       console.log(error);
-      //     })
-      // }
-
     })
     .catch(function (err) {
       payment_request_resolver.reject(err);
