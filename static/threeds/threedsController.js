@@ -67,7 +67,7 @@ let sendConfirmationRequest = (acsTransID) => {
     let identifier = {}
     identifier.acsTransID = acsTransID
 
-    fetch('http://localhost:9095/merchant/requestConfirmation', {
+    fetch('https://threedsserver-demo.lyra-labs.fr/merchant/requestConfirmation', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
@@ -121,7 +121,7 @@ let startAuthentication = (threeDSServerTransID) => {
 
     console.log(paymentData);
 
-    fetch('http://localhost:9095/merchant/pay', {
+    fetch('https://threedsserver-demo.lyra-labs.fr/merchant/pay', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"

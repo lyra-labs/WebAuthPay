@@ -23,7 +23,7 @@ $(document).ready(() => {
     }
 
     let getThreeDSMethod_URL = () => {
-        return fetch('http://localhost:9095/merchant/init', {
+        return fetch('https://threedsserver-demo.lyra-labs.fr/merchant/init', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
