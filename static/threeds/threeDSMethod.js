@@ -23,7 +23,7 @@ $(document).ready(() => {
     }
 
     let getThreeDSMethod_URL = () => {
-        return fetch('http://localhost:4242/merchant/init', {
+        return fetch('http://localhost:9095/merchant/init', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"

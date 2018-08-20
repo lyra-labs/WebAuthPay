@@ -46,6 +46,7 @@ function showPaymentSuccess() {
 
 	$('#container-tuto').hide()
 	$('#base-container').show()
+	window.setTimeout(function () { window.close(); }, 4000);
 }
 
 (function ($) {

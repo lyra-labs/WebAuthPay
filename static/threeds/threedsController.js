@@ -67,7 +67,7 @@ let sendConfirmationRequest = (acsTransID) => {
     let identifier = {}
     identifier.acsTransID = acsTransID
 
-    fetch('http://localhost:4242/merchant/requestConfirmation', {
+    fetch('http://localhost:9095/merchant/requestConfirmation', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
@@ -121,7 +121,7 @@ let startAuthentication = (threeDSServerTransID) => {
 
     console.log(paymentData);
 
-    fetch('http://localhost:4242/merchant/pay', {
+    fetch('http://localhost:9095/merchant/pay', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
