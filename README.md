@@ -2,7 +2,7 @@
 
 # WebAuthPay
 
-Demonstrator with Webauthn + Payment request + Payment handler
+Demonstrator with Webauthn + Payment request + Payment handler, available online on https://webauthpay-demo.lyra-labs.fr/.
 
 ## Requirement
 
